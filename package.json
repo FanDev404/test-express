@@ -18,6 +18,7 @@
   "homepage": "https://github.com/FanDev404/test-express#readme",
   "dependencies": {
     "express": "^4.18.2",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "moment-timezone": "^0.5.34"
   }
 }
