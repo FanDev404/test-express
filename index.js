@@ -1,19 +1,13 @@
 const indexRouter = require("./routes/index");
+const apiRouter = require("./routes/api");
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get("/", (req, res) => {
-    //console.log("Just got a request!")
-    res.send("yo")
-})
-
-app.get("/api", (req, res) => {
-    //console.log("Just got a request!")
-    res.send("ok")
-})
+app.get("/", indexRouter)
+app.get("/api", apiRouter)
 
 app.all("*", function(req, res) {
     return res.status(404).json({
