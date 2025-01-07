@@ -1,5 +1,8 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 3000
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
     //console.log("Just got a request!")
@@ -11,4 +14,15 @@ app.get("/api", (req, res) => {
     res.send("ok")
 })
 
-app.listen(process.env.PORT || 3000)
+app.all("*", function(req, res) {
+    return res.status(404).json({
+		status: false,
+		message: "Page not found",
+	})
+});
+
+app.listen(PORT, () => {
+    console.log("Server running on port : " + PORT)
+})
+
+module.exports = app;
