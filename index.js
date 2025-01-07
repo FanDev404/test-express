@@ -17,10 +17,11 @@ app.get("/api", (req, res) => {
 
 app.all("*", function(req, res) {
     return res.status(404).json({
-		status: false,
-		message: "Page not found",
-	})
-});
+	status: false,
+	data: {},
+	msg: "Page not found",
+    })
+})
 
 app.listen(PORT, () => {
     console.log("Server running on port : " + PORT)
