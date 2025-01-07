@@ -6,8 +6,8 @@ const PORT = process.env.PORT || 3000
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get("/", indexRouter)
-app.get("/api", apiRouter)
+app.use("/", indexRouter)
+app.use("/api", apiRouter)
 
 app.all("*", function(req, res) {
     return res.status(404).json({
